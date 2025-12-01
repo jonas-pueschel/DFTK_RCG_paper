@@ -214,6 +214,8 @@ end
 
 
 function plot_callbacks(callbacks, names, ψ1, basis)
+    gr(reuse = false)
+
     model = basis.model
     filled_occ = DFTK.filled_occupation(model)
     n_spin = model.n_spin_components
