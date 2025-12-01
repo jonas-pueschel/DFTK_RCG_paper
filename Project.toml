@@ -1,5 +1,5 @@
-name = "RCG_DFTK"
-uuid = "1ee6750f-651e-433b-b34e-5bce52f3ff6b"
+name = "RCG_DFTK_paper"
+uuid = "4591cc44-79b3-48da-95d1-a9603d3c515a"
 authors = ["Jonas Püschel <jonas.pueschel@uni-a.de>"]
 version = "0.1.0"
 

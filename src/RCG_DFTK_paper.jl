@@ -1,4 +1,4 @@
-module RCG_DFTK
+module RCG_DFTK_paper
 
 using DFTK
 using Krylov

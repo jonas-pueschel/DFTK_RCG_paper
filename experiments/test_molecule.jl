@@ -1,5 +1,5 @@
 using DFTK
-using RCG_DFTK
+using RCG_DFTK_paper
 using PseudoPotentialData
 
 
