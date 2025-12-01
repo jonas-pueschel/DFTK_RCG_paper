@@ -214,7 +214,7 @@ function energy_adaptive_riemannian_gradient(
         is_converged = RcgConvergenceResidual(tol),
         shift = CorrectedRelativeΛShift(μ = 0.01),
         inner_itmax = 100,
-        inner_tol = 5.0e-2,
+        inner_tol = 2.5e-2,
         h_solver = GlobalOptimalHSolver(),
         retraction = RetractionPolar(),
         transport_η = DifferentiatedRetractionTransport(),
