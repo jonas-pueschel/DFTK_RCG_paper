@@ -3,7 +3,7 @@ module RCG_DFTK_paper
 using DFTK
 using Krylov
 using LinearMaps
-using PlotlyJS
+using Plots
 using Printf
 using LaTeXStrings
 using LinearAlgebra

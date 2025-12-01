@@ -214,6 +214,7 @@ end
 
 
 function plot_callbacks(callbacks, names, ψ1, basis)
+    plotlyjs()
     model = basis.model
     filled_occ = DFTK.filled_occupation(model)
     n_spin = model.n_spin_components
@@ -224,7 +225,7 @@ function plot_callbacks(callbacks, names, ψ1, basis)
     norm_res_0 = norm(DFTK.compute_projected_gradient(basis, ψ1, occupation))
 
     # iterations
-    plt1 = plot(; yscale = :log, ylabel = L"\|\|R^{(k)}\|\|_F", xlabel = "Iterations")
+    plt1 = plot(; yscale = :log, ylabel = "Residual", xlabel = "Iterations")
     for (cb, method_name) in zip(callbacks, names)
         resls = [norm_res_0]
         push!(resls, getfield(cb, :norm_residuals)[1:(end - 1)]...)
@@ -234,7 +235,7 @@ function plot_callbacks(callbacks, names, ψ1, basis)
     display(plt1)
 
     # Hamiltonians
-    plt2 = plot(; yscale = :log, ylabel = L"\|\|R^{(k)}\|\|_F", xlabel = "Hamiltonians")
+    plt2 = plot(; yscale = :log, ylabel = "Residual", xlabel = "Hamiltonians")
     for (cb, method_name) in zip(callbacks, names)
         resls = [norm_res_0]
         push!(resls, getfield(cb, :norm_residuals)[1:(end - 1)]...)
@@ -246,7 +247,7 @@ function plot_callbacks(callbacks, names, ψ1, basis)
     display(plt2)
 
     # Times
-    plt3 = plot(; yscale = :log, ylabel = L"\|\|R^{(k)}\|\|_F", xlabel = "CPU time in s")
+    plt3 = plot(; yscale = :log, ylabel = "Residual", xlabel = "CPU time in s")
     for (cb, method_name) in zip(callbacks, names)
         resls = [norm_res_0]
         push!(resls, getfield(cb, :norm_residuals)[1:(end - 1)]...)
