@@ -16,6 +16,9 @@ include("inner_solvers.jl")
 include("rcg_params.jl")
 include("rcg_callbacks.jl")
 include("rcg_benchmarking.jl")
+include("experiments/test_molecule.jl")
+
+export test_molecule
 
 export riemannian_conjugate_gradient,
     h1_riemannian_conjugate_gradient,
@@ -84,4 +87,4 @@ export RcgDefaultCallback,
     RcgConvergenceResidual
 
 
-end # module RCG_DFTK
+end # module RCG_DFTK_paper
