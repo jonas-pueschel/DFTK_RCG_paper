@@ -12,10 +12,12 @@ LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 LinearMaps = "7a12625a-238d-50fd-b39a-03d52299707e"
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+PseudoPotentialData = "5751a51d-ac76-4487-a056-413ecf6fbe19"
 TimerOutputs = "a759f4b9-e2f1-59dc-863e-4aeb61b1ea8f"
 
 [compat]
 DFTK = "0.7.17"
 LinearAlgebra = "1.11.0"
 Printf = "1.11.0"
+PseudoPotentialData = "0.2.4"
 TimerOutputs = "0.5.29"
