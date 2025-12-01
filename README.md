@@ -5,11 +5,6 @@ This is the implementation from this [preprint](https://arxiv.org/abs/2503.16225
 IT IS NOT MAINTAINED. FOR THE 
 CURRENT VERSION, SEE [HERE](https://github.com/jonas-pueschel/DFTK_RCG).*
 
-# Getting started
-In julia you can get started by just typing
-```julia
-using Pkg; Pkg.add(path = "https://github.com/jonas-pueschel/RCG_DFTK_paper.git")
-```
 
 # Usage
 This package is not intended to be used other than to re-do the experimentst from [the paper](https://arxiv.org/abs/2503.16225). For package usage, refer to the [DFTK_RCG repository](https://github.com/jonas-pueschel/DFTK_RCG), which is kept up to date. This package can however be used similarly in principal.
@@ -18,4 +13,6 @@ This package is not intended to be used other than to re-do the experimentst fro
 
 
  
-
+```julia
+using Pkg; Pkg.add(path = "https://github.com/jonas-pueschel/RCG_DFTK_paper.git")
+```
