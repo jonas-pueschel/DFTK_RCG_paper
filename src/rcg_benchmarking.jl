@@ -213,8 +213,9 @@ function update_callback(callback::ResidualEvalCallback, ::EvalPDCM)
 end
 
 
-function plot_callbacks(callbacks, names, ψ1, basis)
-    plotlyjs()
+function plot_callbacks(callbacks, names, ψ1, basis, model_name)
+    pyplot()
+
     model = basis.model
     filled_occ = DFTK.filled_occupation(model)
     n_spin = model.n_spin_components
@@ -225,36 +226,37 @@ function plot_callbacks(callbacks, names, ψ1, basis)
     norm_res_0 = norm(DFTK.compute_projected_gradient(basis, ψ1, occupation))
 
     # iterations
-    plt1 = plot(; yscale = :log, ylabel = "Residual", xlabel = "Iterations")
+    plt1 = Plots.plot(; yscale = :log, ylabel = "Residual", xlabel = "Iterations", title = "$model_name Iterations")
     for (cb, method_name) in zip(callbacks, names)
         resls = [norm_res_0]
         push!(resls, getfield(cb, :norm_residuals)[1:(end - 1)]...)
         its = (0:(length(resls) - 1))
-        plot!(its, resls, label = method_name)
+        Plots.plot!(its, resls, label = method_name)
     end
-    display(plt1)
 
     # Hamiltonians
-    plt2 = plot(; yscale = :log, ylabel = "Residual", xlabel = "Hamiltonians")
+    plt2 = Plots.plot(; yscale = :log, ylabel = "Residual", xlabel = "Hamiltonians", reuse = false, title = "$model_name Hamiltonians")
     for (cb, method_name) in zip(callbacks, names)
         resls = [norm_res_0]
         push!(resls, getfield(cb, :norm_residuals)[1:(end - 1)]...)
         hams = [0.0]
         push!(hams, getfield(cb, :calls_DftHamiltonian)[1:(end - 1)]...)
         hams .*= 1 / n_bands
-        plot!(hams, resls, label = method_name)
+        Plots.plot!(hams, resls, label = method_name)
     end
-    display(plt2)
+
 
     # Times
-    plt3 = plot(; yscale = :log, ylabel = "Residual", xlabel = "CPU time in s")
+    plt3 = Plots.plot(; yscale = :log, ylabel = "Residual", xlabel = "CPU time in s", reuse = false, title = "$model_name CPU time")
     for (cb, method_name) in zip(callbacks, names)
         resls = [norm_res_0]
         push!(resls, getfield(cb, :norm_residuals)[1:(end - 1)]...)
         times = [0.0]
         push!(times, getfield(cb, :times_tot)[1:(end - 1)]...)
         times .*= 1.0e-9
-        plot!(times, resls, label = method_name)
+        Plots.plot!(times, resls, label = method_name)
     end
-    return display(plt3)
+
+    return plt1, plt2, plt3
 end
+

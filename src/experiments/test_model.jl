@@ -1,11 +1,6 @@
 using PseudoPotentialData
 
-
-include("./setups/silicon_setup.jl")
-include("./setups/GaAs_setup.jl")
-include("./setups/TiO2_setup.jl")
-
-function test_molecule(; model_name = "silicon")
+function test_model(; model_name = "silicon")
     
     if model_name == "silicon"
         model, basis = silicon_setup(; Ecut = 30, kgrid = [4, 4, 4], supercell_size = [1, 1, 1]);
@@ -82,10 +77,10 @@ function test_molecule(; model_name = "silicon")
     println(DFTK.timer)
 
     # In order to make this plot independent from precompile time,
-    # one should make it run twice
+    # run the precompile_methods function before (otherwise times will be off)
     plot_callbacks(
         [callback_scf, callback_h1rcg, callback_earcg, callback_earg],
         ["SCF", "H1RCG", "EARCG", "EARG"],
-        ψ1, basis
+        ψ1, basis, model_name
     )
 end
